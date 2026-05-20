@@ -1,5 +1,5 @@
 // ─── SERVICE WORKER — PontiFy (github.io/pontify) ─────────
-const VERSION = 'v5.5.8';
+const VERSION = 'v5.5.9';
 const CACHE   = `pontify-${VERSION}`;
 
 const ASSETS = [
