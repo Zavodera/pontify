@@ -1,5 +1,5 @@
 // ─── SERVICE WORKER — PontiFy (github.io/pontify) ─────────
-const VERSION = 'v5.9.0';
+const VERSION = 'v5.9.1';
 const CACHE   = `pontify-${VERSION}`;
 
 const ASSETS = [
@@ -24,6 +24,12 @@ self.addEventListener('install', event => {
 
 // ── ACTIVATE: limpa TODOS os caches antigos ──────────────
 self.addEventListener('activate', event => {
+  // Limpa TODOS os caches antigos ao ativar nova versão
+  event.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+    ).then(() => clients.claim())
+  );
   console.log(`[SW] Ativando ${CACHE}`);
   event.waitUntil(
     caches.keys().then(keys =>
