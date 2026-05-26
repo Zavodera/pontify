@@ -1,5 +1,5 @@
 // ─── SERVICE WORKER — PontiFy (github.io/pontify) ─────────
-const VERSION = 'v5.8.4';
+const VERSION = 'v5.8.5';
 const CACHE   = `pontify-${VERSION}`;
 
 const ASSETS = [
@@ -44,6 +44,8 @@ self.addEventListener('fetch', event => {
   if (event.request.url.includes('supabase.co')) return;
   if (event.request.url.includes('googleapis.com')) return;
   if (event.request.url.includes('jsdelivr.net')) return;
+  if (event.request.url.includes('sheetjs.com')) return;
+  if (event.request.url.includes('cdn.')) return;
 
   const isHTML = event.request.destination === 'document'
     || event.request.url.endsWith('.html')
