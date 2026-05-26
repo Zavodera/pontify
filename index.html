@@ -1219,38 +1219,32 @@ window.addEventListener('load',async()=>{
   }
 
   // ── Verifica sessão normal ──
-  // Usa getUser() para validar contra o servidor e evitar CU.id stale do localStorage
-  let validUser=null;
+  let session=null;
   try{
-    const{data:sessionData}=await db.auth.getSession();
-    if(sessionData?.session){
-      // Valida o token diretamente no servidor (evita UUID errado por sessão expirada)
-      const{data:userData,error:userErr}=await db.auth.getUser();
-      if(!userErr&&userData?.user){
-        validUser=userData.user;
-      }else{
-        // Token inválido/expirado — limpa sessão corrompida
-        console.warn('[PontiFy] Sessão inválida, limpando...',userErr?.message);
-        await db.auth.signOut();
-      }
-    }
-  }catch(e){console.warn('[PontiFy] Erro ao verificar sessão:',e);}
+    const{data}=await db.auth.getSession();
+    session=data?.session||null;
+  }catch(e){/* seguro */}
   hide('ld');
 
-  if(validUser){CU=validUser;await boot();}
+  if(session){CU=session.user;await boot();}
   else{show('auth','flex');}
 });
 
 async function boot(){
   hide('ld');hide('auth');
-  // Diagnóstico: confirma o UUID real da sessão ativa
-  try{
-    const{data:ud}=await db.auth.getUser();
-    if(ud?.user&&ud.user.id!==CU?.id){
-      console.warn('[PontiFy] CU.id divergente! Corrigindo:',CU?.id,'→',ud.user.id);
+  // Correção silenciosa de UUID: valida CU.id contra o servidor em background
+  // NÃO bloqueia o boot — só corrige se houver divergência
+  db.auth.getUser().then(({data:ud,error})=>{
+    if(!error&&ud?.user&&ud.user.id!==CU?.id){
+      console.warn('[PontiFy] CU.id corrigido:',CU?.id,'→',ud.user.id);
       CU=ud.user;
+      // Recarrega dados com o UUID correto
+      loadProfile().then(()=>{
+        syncProfileUI();renderHome();renderSteps();
+        renderHist(histMesAtual);renderWeek();updateBanco();
+      });
     }
-  }catch(e){}
+  }).catch(()=>{});
   await loadProfile();
   // Verifica se conta está pendente de aprovação
   if(profile.status==='pendente'){
@@ -1483,9 +1477,7 @@ async function doLogin(){
   amsg('Entrando…','');
   const{data,error}=await db.auth.signInWithPassword({email,password:pass});
   if(error)return amsg('E-mail ou senha incorretos.','err');
-  // Usa getUser() para garantir o UUID correto (não o objeto do JWT local)
-  const{data:ud}=await db.auth.getUser();
-  CU=ud?.user||data.user;await boot();
+  CU=data.user;await boot();
 }
 async function doSignup(){
   const name=v('s-name').trim(),email=v('s-email').trim(),pass=v('s-pass');
