@@ -5,7 +5,7 @@ const CACHE   = `pontify-${VERSION}`;
 const ASSETS = [
   './index.html',
   './manifest.json',
-  // './abertura.json', // Lottie desativado temporariamentEe
+  // './abertura.json', // Lottie desativado temporariamente
   'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap',
   'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2'
 ];
