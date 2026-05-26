@@ -1090,6 +1090,20 @@ const MONTHS=['janeiro','fevereiro','março','abril','maio','junho','julho','ago
 
 // ── THEME ─────────────────────────────────────────
 function applyTheme(){document.documentElement.setAttribute('data-theme','dark');}
+
+// ── UTILIDADES DOM ──────────────────────────────────
+const g=id=>document.getElementById(id);
+const show=(id,d='flex')=>{const el=g(id);if(el)el.style.display=d;};
+const hide=id=>{const el=g(id);if(el)el.style.display='none';};
+const txt=(id,t)=>{const el=g(id);if(el)el.textContent=t;};
+const v=id=>g(id)?.value||'';
+const pad=n=>String(n).padStart(2,'0');
+
+function toast(msg,type=''){
+  const t=g('toast');if(!t)return;
+  t.textContent=msg;t.className='toast on'+(type?' '+type:'');
+  clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2800);
+}
 function successPopup(msg){
   // Pop-up central de sucesso para ações de salvar
   const sp=g('success-popup');const ov=g('sp-overlay');
