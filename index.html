@@ -227,9 +227,9 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
 /* MODAL */
 .m-ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(2px)}
 .m-ov.on{display:flex}
-.modal{background:var(--bg-card);border:1px solid var(--border-m);border-radius:var(--r-xl) var(--r-xl) 0 0;padding:1.5rem;width:100%;max-width:480px;max-height:85vh;overflow-y:auto}
+.modal{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-xl) var(--r-xl) 0 0;padding:1.5rem;width:100%;max-width:480px;max-height:85vh;overflow-y:auto}
 .m-handle{width:36px;height:4px;border-radius:2px;background:var(--border);margin:0 auto 1.25rem}
-.m-title{font-size:19px;font-weight:800;margin-bottom:.5rem}
+.m-title{font-size:19px;font-weight:800;margin-bottom:.5rem;color:var(--text-1)}
 .m-body-txt{font-size:14px;color:var(--text-2);line-height:1.6;margin-bottom:.75rem}
 .m-acts{display:flex;gap:.5rem;margin-top:1rem}
 .btn-mc{flex:1;padding:.8rem;background:var(--bg-s);border:1.5px solid var(--border);border-radius:var(--r-sm);color:var(--text-2);font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer}
@@ -467,7 +467,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
   if(!('serviceWorker' in navigator))return;
   try{
     // Limpa TODOS os caches de versões anteriores
-    const CURRENT='pontify-v5.10.6';
+    const CURRENT='pontify-v5.10.8';
     const keys=await caches.keys();
     for(const k of keys){
       if(k!==CURRENT){await caches.delete(k);console.log('[cache] deleted:',k);}
@@ -692,7 +692,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
 </div>
       <div class="card"><div class="card-lbl">Semana atual</div><div class="week-wrap" id="week-chart"></div><div style="display:flex;justify-content:space-between;margin-top:2px;padding-top:4px;border-top:1px solid var(--border-m)" id="week-days"></div></div>
       <!-- Histórico movido para aba Meu Ponto -->
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
     <div class="page" id="pg-ponto">
       <div class="clk-hero">
@@ -708,7 +708,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
   </div>
   <div class="btn-punch-ico" id="btn-punch-ico">⏱</div>
 </button>
-      <div class="notif-card"><div style="font-size:22px">🔔</div><div style="flex:1"><div style="font-size:14px;font-weight:700">Lembrete de ponto</div><div style="font-size:12px;color:var(--text-2);margin-top:2px" id="notif-sub">Ativar avisos automáticos</div><div style="font-size:10px;color:var(--text-3);margin-top:3px">⚠️ Apenas com app aberto no navegador</div></div><label class="sw"><input type="checkbox" id="notif-tog" onchange="toggleNotif()"><div class="sw-track"></div><div class="sw-thumb"></div></label></div>
+      <div class="notif-card" style="display:none"><div style="font-size:22px">🔔</div><div style="flex:1"><div style="font-size:14px;font-weight:700">Lembrete de ponto</div><div style="font-size:12px;color:var(--text-2);margin-top:2px" id="notif-sub">Ativar avisos automáticos</div><div style="font-size:10px;color:var(--text-3);margin-top:3px">⚠️ Apenas com app aberto no navegador</div></div><label class="sw"><input type="checkbox" id="notif-tog" onchange="toggleNotif()"><div class="sw-track"></div><div class="sw-thumb"></div></label></div>
       <!-- Lançamento rápido — só autônomo -->
       <div id="card-lancamento-rapido" style="display:none;margin-bottom:.75rem">
         <button class="btn-ghost" onclick="abrirLancamentoRapido()"
@@ -717,12 +717,12 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
         </button>
       </div>
       <div class="card"><div class="card-lbl">Histórico de pontos</div><div id="hist-header"></div><div id="hist-list"></div></div>
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
     <div class="page" id="pg-config">
       <div class="pg-title">Configurações</div><div class="pg-sub">Personalize o app</div>
       <div class="sg-title">Jornada</div>
-      <div class="slist"><div class="srow"><div class="srow-ico" style="background:var(--red-pale)">⏰</div><div class="srow-info"><div class="srow-lbl">Horas por dia</div><div class="srow-sub">Carga horária diária</div></div><div style="display:flex;align-items:center;gap:4px">
+      <div class="slist"><div class="srow"><div class="srow-ico" style="background:var(--red-pale)">⏰</div><div class="srow-info"><div class="srow-lbl">Horas por dia</div><div class="srow-sub">Tempo total na empresa por turno</div></div><div style="display:flex;align-items:center;gap:4px">
     <input type="number" id="cfg-hd" min="1" max="24" step="0.25"
       style="width:64px;background:var(--bg-in);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:.4rem .6rem;color:var(--text-1);font-family:var(--mono);font-size:15px;font-weight:700;text-align:center;outline:none"
       onchange="saveConfig()" onblur="saveConfig()">
@@ -732,7 +732,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
         <div class="srow-ico" style="background:var(--info-bg)">📋</div>
         <div class="srow-info">
           <div class="srow-lbl">Descontar almoço da jornada</div>
-          <div class="srow-sub">Desative se o almoço faz parte das horas contratadas</div>
+          <div class="srow-sub">Ativo: desconta almoço real e compara com intervalo contratado</div>
         </div>
         <label class="sw"><input type="checkbox" id="cfg-desc-almoco" onchange="saveConfig()" checked><div class="sw-track"></div><div class="sw-thumb"></div></label>
       </div><div class="srow"><div class="srow-ico" style="background:var(--info-bg)">📏</div><div class="srow-info"><div class="srow-lbl">Tolerância</div><div class="srow-sub">Margem antes de atraso</div></div><select class="ssel" id="cfg-tol" onchange="saveConfig()"><option value="0">0min</option><option value="5">5min</option><option value="10" selected>10min</option><option value="15">15min</option></select></div></div>
@@ -744,7 +744,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
               <div style="font-size:14px;font-weight:700;color:var(--text-1);margin-bottom:3px">Recalcular histórico?</div>
               <div style="font-size:12px;color:var(--text-2);margin-bottom:.75rem">Você alterou a configuração de jornada. Deseja recalcular os registros anteriores com a nova configuração? <span id="migracao-count" style="font-weight:700;color:var(--warn)"></span></div>
               <div style="background:var(--bg-s);border:1px solid var(--border);border-radius:var(--r-sm);padding:.6rem .75rem;margin-bottom:.75rem;font-size:11px;color:var(--warn);font-weight:600">
-                ⚠️ Esta ação não pode ser desfeita. Os valores anteriores serão substituídos.
+                ⚠️ Os valores salvos serão substituídos. Se mudar de ideia, ajuste a configuração e recalcule novamente.
               </div>
               <div style="display:flex;gap:.5rem">
                 <button onclick="executarMigracao()" style="flex:1;padding:.55rem;background:var(--warn);border:none;border-radius:var(--r-sm);font-size:13px;font-weight:700;color:#000;cursor:pointer">Recalcular</button>
@@ -754,8 +754,8 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
           </div>
         </div>
       </div>
-      <div class="sg-title">Notificações</div>
-      <div class="slist"><div class="srow"><div class="srow-ico" style="background:var(--red-pale)">🔔</div><div class="srow-info"><div class="srow-lbl">Lembretes</div><div class="srow-sub">Avisos automáticos</div></div><label class="sw"><input type="checkbox" id="cfg-notif" onchange="saveConfig()"><div class="sw-track"></div><div class="sw-thumb"></div></label></div><div class="srow" style="opacity:.5"><div class="srow-ico" style="background:var(--ok-bg)">📋</div><div class="srow-info"><div class="srow-lbl">Relatório semanal por email</div><div class="srow-sub">Em breve — integração com email</div></div><label class="sw" style="pointer-events:none"><input type="checkbox" id="cfg-sem" disabled><div class="sw-track"></div><div class="sw-thumb"></div></label></div></div>
+      <div class="sg-title" style="display:none">Notificações</div>
+      <div class="slist" style="display:none"><div class="srow"><div class="srow-ico" style="background:var(--red-pale)">🔔</div><div class="srow-info"><div class="srow-lbl">Lembretes</div><div class="srow-sub">Avisos automáticos</div></div><label class="sw"><input type="checkbox" id="cfg-notif" onchange="saveConfig()"><div class="sw-track"></div><div class="sw-thumb"></div></label></div><div class="srow" style="opacity:.5"><div class="srow-ico" style="background:var(--ok-bg)">📋</div><div class="srow-info"><div class="srow-lbl">Relatório semanal por email</div><div class="srow-sub">Em breve — integração com email</div></div><label class="sw" style="pointer-events:none"><input type="checkbox" id="cfg-sem" disabled><div class="sw-track"></div><div class="sw-thumb"></div></label></div></div>
       <!-- SEÇÃO AUTÔNOMO — visível só se perfil_tipo='autonomo' -->
       <div id="sg-autonomo" style="display:none">
         <div class="sg-title">💼 Precificação — Autônomo</div>
@@ -809,11 +809,11 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
       </div>
       <div id="sg-avancado" style="display:none">
         <div class="sg-title" style="font-size:11px;margin-top:.5rem;margin-bottom:.25rem">ATUALIZAÇÃO</div>
-      <div class="slist"><div class="srow" onclick="manualUpdate()" style="cursor:pointer"><div class="srow-ico" style="background:var(--red-pale)">🔄</div><div class="srow-info"><div class="srow-lbl">Verificar atualização</div><div class="srow-sub" id="update-status">Versão <span class="app-ver">5.10.6</span></div></div><svg width="16" height="16" fill="none" stroke="var(--text-3)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div><div class="srow" onclick="forceReload()" style="cursor:pointer"><div class="srow-ico" style="background:var(--info-bg)">⚡</div><div class="srow-info"><div class="srow-lbl">Forçar recarregamento</div><div class="srow-sub">Limpa cache e recarrega</div></div><svg width="16" height="16" fill="none" stroke="var(--text-3)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>
+      <div class="slist"><div class="srow" onclick="manualUpdate()" style="cursor:pointer"><div class="srow-ico" style="background:var(--red-pale)">🔄</div><div class="srow-info"><div class="srow-lbl">Verificar atualização</div><div class="srow-sub" id="update-status">Versão <span class="app-ver">5.10.8</span></div></div><svg width="16" height="16" fill="none" stroke="var(--text-3)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div><div class="srow" onclick="forceReload()" style="cursor:pointer"><div class="srow-ico" style="background:var(--info-bg)">⚡</div><div class="srow-info"><div class="srow-lbl">Forçar recarregamento</div><div class="srow-sub">Limpa cache e recarrega</div></div><svg width="16" height="16" fill="none" stroke="var(--text-3)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>
       <div class="sg-title" style="font-size:11px;margin-top:.75rem;margin-bottom:.25rem">DADOS</div>
       <div class="slist"><div class="srow" onclick="confirmDeleteAll()" style="cursor:pointer"><div class="srow-ico" style="background:var(--err-bg)">🗑️</div><div class="srow-info"><div class="srow-lbl" style="color:var(--err)">Apagar meus registros</div><div class="srow-sub">Ação irreversível</div></div><svg width="16" height="16" fill="none" stroke="var(--text-3)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>
       </div>
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
     <div class="page" id="pg-feedback">
       <div class="pg-title">Feedback</div><div class="pg-sub">Sua opinião melhora o app</div>
@@ -823,7 +823,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
         <button class="btn-red" onclick="sendFeedback()" id="fb-send-btn">Enviar feedback</button>
       </div>
       <div class="fb-sent" id="fb-sent-wrap"><div style="font-size:52px;margin-bottom:1rem">🎉</div><div style="font-size:20px;font-weight:800;margin-bottom:.5rem">Feedback enviado!</div><div style="font-size:14px;color:var(--text-2)">Paulo Santos irá analisar sua sugestão.</div><button class="btn-red" style="margin-top:1.5rem;max-width:200px" onclick="resetFeedback()">Enviar outro</button></div>
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
     <div class="page" id="pg-conta">
       <div style="background:var(--bg-card);border:1px solid var(--border-m);border-radius:var(--r-xl);padding:1.75rem 1.25rem 1.25rem;text-align:center;margin-bottom:1rem;box-shadow:var(--sh-sm)">
@@ -843,7 +843,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
       <button class="btn-out" onclick="doLogout()">Sair da conta</button>
 
       <div class="card" style="margin-top:1rem"><div class="card-lbl">Solicitações de ajuste de ponto</div><div id="minhas-solicitacoes"></div><button class="btn-ghost" onclick="openSolicitacao()" style="margin-top:.5rem">➕ Nova solicitação</button></div>
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
   </div>
   <div class="tabs">
@@ -866,7 +866,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
         <div class="card-lbl">Banco de horas — mês atual</div>
         <div id="g-banco-list"><div style="font-size:13px;color:var(--text-3);text-align:center;padding:.5rem">Carregando...</div></div>
       </div>
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
     <div class="page" id="pg-g-hist">
       <div class="pg-title">Histórico</div><div class="pg-sub">Registros do setor</div>
@@ -880,12 +880,12 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
         <button class="btn-ghost" onclick="loadGestorHist()" style="margin-bottom:0">🔍 Filtrar período</button>
       </div>
       <div id="g-hist-list"></div>
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
     <div class="page" id="pg-g-sol">
       <div class="pg-title">Solicitações</div><div class="pg-sub">Ajustes de ponto pendentes</div>
       <div id="g-sol-list"></div>
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
     <div class="page" id="pg-g-perfil">
       <div class="pg-title">Meu perfil</div>
@@ -967,7 +967,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
       </div><!-- /admin-brand-body -->
       </div>
       <button class="btn-out" onclick="doLogout()" style="margin-top:.5rem">Sair da conta</button>
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
   </div>
   <div class="tabs">
@@ -991,7 +991,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
       <div class="admin-stats"><div class="admin-stat"><div class="admin-stat-val" id="a-total-users">--</div><div class="admin-stat-lbl">Usuários</div></div><div class="admin-stat"><div class="admin-stat-val" id="a-total-setores">--</div><div class="admin-stat-lbl">Setores</div></div><div class="admin-stat"><div class="admin-stat-val" id="a-total-pendentes">--</div><div class="admin-stat-lbl">Pendentes</div></div></div>
       <div class="card"><div class="card-lbl">Ações rápidas</div><div class="slist"><div class="srow" onclick="navAdmin('a-users',1)" style="cursor:pointer"><div class="srow-ico" style="background:var(--red-pale)">👥</div><div class="srow-info"><div class="srow-lbl">Gerenciar usuários</div><div class="srow-sub">Promover, editar, excluir</div></div><svg width="16" height="16" fill="none" stroke="var(--text-3)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div><div class="srow" onclick="navAdmin('a-setores',3)" style="cursor:pointer"><div class="srow-ico" style="background:var(--info-bg)">🏢</div><div class="srow-info"><div class="srow-lbl">Gerenciar setores</div><div class="srow-sub">Criar e atribuir gestores</div></div><svg width="16" height="16" fill="none" stroke="var(--text-3)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div><div class="srow" onclick="navAdmin('a-sol',2)" style="cursor:pointer"><div class="srow-ico" style="background:var(--warn-bg)">📝</div><div class="srow-info"><div class="srow-lbl">Solicitações de ajuste</div><div class="srow-sub" id="a-pendentes-lbl">Ver todas</div></div><svg width="16" height="16" fill="none" stroke="var(--text-3)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div><div class="srow" onclick="navAdmin('a-pontos',4)" style="cursor:pointer"><div class="srow-ico" style="background:var(--ok-bg)">🕐</div><div class="srow-info"><div class="srow-lbl">Todos os pontos</div><div class="srow-sub">Visão global da empresa</div></div><svg width="16" height="16" fill="none" stroke="var(--text-3)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div></div>
       <button class="btn-out" onclick="doLogout()" style="margin-top:.5rem">Sair da conta</button>
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
     <div class="page" id="pg-a-users">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem"><button onclick="navAdmin('a-dash',0)" style="background:none;border:none;font-size:22px;cursor:pointer;color:var(--text-2)">←</button><div class="pg-title" style="margin-bottom:0">Usuários</div></div>
@@ -1000,18 +1000,18 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
         <button onclick="toggleFiltroStatus()" id="btn-filtro-pendentes" style="padding:.6rem .9rem;background:var(--warn-bg);border:1.5px solid var(--warn);border-radius:var(--r-sm);color:var(--warn);font-family:var(--font);font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap" title="Ver pendentes">⏳ Pendentes</button>
       </div>
       <div class="slist" id="users-list"><div class="empty"><div class="empty-ico">👥</div><div class="empty-txt">Carregando...</div></div></div>
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
     <div class="page" id="pg-a-sol">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem"><button onclick="navAdmin('a-dash',0)" style="background:none;border:none;font-size:22px;cursor:pointer;color:var(--text-2)">←</button><div class="pg-title" style="margin-bottom:0">Solicitações</div></div>
       <div id="a-sol-list"><div class="empty"><div class="empty-ico">📝</div><div class="empty-txt">Carregando...</div></div></div>
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
     <div class="page" id="pg-a-setores">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem"><button onclick="navAdmin('a-dash',0)" style="background:none;border:none;font-size:22px;cursor:pointer;color:var(--text-2)">←</button><div class="pg-title" style="margin-bottom:0">Setores</div></div>
       <div class="card"><div class="card-lbl">Criar novo setor</div><div class="pf-f"><input type="text" id="novo-setor-nome" placeholder="Nome do setor (ex: Produção, TI...)"></div><button class="btn-red" onclick="criarSetor()">Criar setor</button></div>
       <div id="setores-list"></div>
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
     <div class="page" id="pg-a-pontos">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem"><button onclick="navAdmin('a-dash',0)" style="background:none;border:none;font-size:22px;cursor:pointer;color:var(--text-2)">←</button><div class="pg-title" style="margin-bottom:0">Todos os pontos</div></div>
@@ -1021,7 +1021,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
         <button class="btn-ghost" onclick="exportRelatorioAdmin()" style="margin-bottom:0;border-color:var(--ok);color:var(--ok)">📄 Exportar relatório consolidado (PDF)</button>
       </div>
       <div id="a-pontos-list"></div>
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 PontiFy · Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
   </div>
   <div class="tabs">
@@ -1056,7 +1056,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
         <div class="card-lbl">Empresas cadastradas</div>
         <div id="s-emp-list"><div class="empty"><div class="empty-ico">🏢</div><div class="empty-txt">Carregando...</div></div></div>
       </div>
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
     <!-- NOVA EMPRESA -->
     <div class="page" id="pg-s-nova">
@@ -1071,13 +1071,13 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text-1);f
         </div>
       </div>
       <button class="btn-red" style="background:#7C3AED;box-shadow:0 4px 16px rgba(124,58,237,.35)" onclick="criarEmpresa()">Criar empresa</button>
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
     <!-- DETALHE EMPRESA -->
     <div class="page" id="pg-s-emp">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem"><button onclick="navSuper('s-dash',0)" style="background:none;border:none;font-size:22px;cursor:pointer;color:var(--text-2)">←</button><div class="pg-title" style="margin-bottom:0" id="s-emp-title">Empresa</div></div>
       <div id="s-emp-detail"></div>
-      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 Paulo Santos · Versão <span class="app-ver">5.10.6</span></div></div>
+      <div class="app-footer"><div class="app-footer-brand">PontiFy</div><div class="app-footer-copy">© 2025 Paulo Santos · Versão <span class="app-ver">5.10.8</span></div></div>
     </div>
   </div>
   <div class="tabs">
@@ -1795,7 +1795,7 @@ async function executarMigracao(){
   }
 
   if(card)card.style.display='none';
-  toast(`✅ ${atualizados} registro${atualizados>1?'s':''} recalculado${atualizados>1?'s':''}. Banco de horas atualizado.`,'ok');
+  toast(`✅ ${atualizados} registro${atualizados>1?'s':''} recalculado${atualizados>1?'s':''}!`,'ok');
   // Recarrega tudo com novos valores
   await Promise.all([loadRec(),updateBanco()]);
   renderHome();renderHist(histMesAtual);renderWeek();
@@ -1934,7 +1934,7 @@ async function doPunch(){
     }else{
       fld=!rec.saida_almoco?'saida_almoco':!rec.retorno_almoco?'retorno_almoco':!rec.saida?'saida':null;
     }
-    if(!fld)return toast('Todos os pontos já registrados!','');
+    if(!fld)return toast('Todos os pontos já registrados!','ok');
     // ── Verifica saída antecipada ──────────────────────────────────────
     if(fld==='saida'&&profile.perfil_tipo!=='autonomo'){
       const prevSaida=calcPrev(rec);
@@ -2379,25 +2379,25 @@ function abrirDetalheHist(rEnc){
     <div style="background:var(--bg-s);border-radius:var(--r-md);padding:1rem;margin-bottom:1rem">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
         <div style="background:var(--bg-card);border-radius:var(--r-sm);padding:.75rem;text-align:center;border:1px solid var(--border-m)">
-          <div style="font-size:10px;font-weight:700;color:var(--text-3);text-transform:uppercase;margin-bottom:4px">🟢 Entrada</div>
-          <div style="font-size:18px;font-weight:800;font-family:var(--mono)">${r.entrada||'—'}</div>
+          <div style="font-size:10px;font-weight:700;color:var(--text-2);text-transform:uppercase;margin-bottom:4px">🟢 Entrada</div>
+          <div style="font-size:18px;font-weight:800;font-family:var(--mono);color:var(--text-1)">${r.entrada||'—'}</div>
         </div>
         <div style="background:var(--bg-card);border-radius:var(--r-sm);padding:.75rem;text-align:center;border:1px solid var(--border-m)">
-          <div style="font-size:10px;font-weight:700;color:var(--text-3);text-transform:uppercase;margin-bottom:4px">🟡 Saída almoço</div>
-          <div style="font-size:18px;font-weight:800;font-family:var(--mono)">${r.saida_almoco||'—'}</div>
+          <div style="font-size:10px;font-weight:700;color:var(--text-2);text-transform:uppercase;margin-bottom:4px">🟡 Saída almoço</div>
+          <div style="font-size:18px;font-weight:800;font-family:var(--mono);color:var(--text-1)">${r.saida_almoco||'—'}</div>
         </div>
         <div style="background:var(--bg-card);border-radius:var(--r-sm);padding:.75rem;text-align:center;border:1px solid var(--border-m)">
-          <div style="font-size:10px;font-weight:700;color:var(--text-3);text-transform:uppercase;margin-bottom:4px">🔵 Retorno</div>
-          <div style="font-size:18px;font-weight:800;font-family:var(--mono)">${r.retorno_almoco||'—'}</div>
+          <div style="font-size:10px;font-weight:700;color:var(--text-2);text-transform:uppercase;margin-bottom:4px">🔵 Retorno</div>
+          <div style="font-size:18px;font-weight:800;font-family:var(--mono);color:var(--text-1)">${r.retorno_almoco||'—'}</div>
         </div>
         <div style="background:var(--bg-card);border-radius:var(--r-sm);padding:.75rem;text-align:center;border:1px solid var(--border-m)">
-          <div style="font-size:10px;font-weight:700;color:var(--text-3);text-transform:uppercase;margin-bottom:4px">🔴 Saída</div>
-          <div style="font-size:18px;font-weight:800;font-family:var(--mono)">${r.saida||'—'}</div>
+          <div style="font-size:10px;font-weight:700;color:var(--text-2);text-transform:uppercase;margin-bottom:4px">🔴 Saída</div>
+          <div style="font-size:18px;font-weight:800;font-family:var(--mono);color:var(--text-1)">${r.saida||'—'}</div>
         </div>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border-m)">
         <span style="font-size:13px;color:var(--text-2)">Total trabalhado</span>
-        <span style="font-size:16px;font-weight:800;font-family:var(--mono)">${mhm(tot)}</span>
+        <span style="font-size:16px;font-weight:800;font-family:var(--mono);color:var(--text-1)">${mhm(tot)}</span>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.4rem">
         <span style="font-size:13px;color:var(--text-2)">Saldo do dia</span>
@@ -3004,7 +3004,7 @@ async function exportXLSX(){
   let q=db.from('registros').select('*').eq('user_id',CU.id).order('data');
   q=q.gte('data',de).lte('data',ate);
   const{data}=await q;
-  if(!data?.length)return toast('Nenhum registro no período selecionado','');
+  if(!data?.length)return toast('Nenhum registro no período selecionado','warn');
 
   // Definição de calcTXLS — deve ser antes de qualquer uso
   const descontaAlmocoXLS=cfg.descontaAlmoco!==false;
@@ -3293,7 +3293,7 @@ async function exportPDF(){
   let q=db.from('registros').select('*').eq('user_id',CU.id).order('data');
   q=q.gte('data',de).lte('data',ate);
   const{data}=await q;
-  if(!data?.length){win.close();return toast('Nenhum registro no período selecionado','');}
+  if(!data?.length){win.close();return toast('Nenhum registro no período selecionado','warn');}
 
   const target=cfg.hd*60-(cfg.descontaAlmoco!==false?cfg.al:0);
   const nome=profile.nome||CU.email;
@@ -3712,6 +3712,21 @@ function renderSolList(elId,data,userMap){
       ${acoes}
     </div>`;
   }).join('');
+}
+
+async function respSolicitacao(solId, novoStatus){
+  const labels={rejeitado:'Rejeitar solicitação',aprovado:'Aprovar solicitação'};
+  const msgs={rejeitado:'A solicitação será marcada como rejeitada.',aprovado:'A solicitação será marcada como aprovada.'};
+  showModal(labels[novoStatus]||'Confirmar', msgs[novoStatus]||'Confirmar ação?', async()=>{
+    const{data:gestorProfile}=await db.from('profiles').select('nome').eq('user_id',CU.id).maybeSingle();
+    const aprovadoPorNome=gestorProfile?.nome||CU.email;
+    const{error}=await db.from('solicitacoes_ajuste')
+      .update({status:novoStatus, aprovado_por:CU.id, aprovado_por_nome:aprovadoPorNome})
+      .eq('id',solId);
+    if(error){toast('Erro ao atualizar solicitação.','err');return;}
+    toast(novoStatus==='rejeitado'?'Solicitação rejeitada.':'Solicitação aprovada.', novoStatus==='rejeitado'?'err':'ok');
+    loadSolicitacoesGestor?.();
+  });
 }
 
 async function abrirAprovacaoSol(solId,uid,data,campo,valorSolicitado,nomeFunc,somenteEditar=false){
